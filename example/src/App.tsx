@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Box, Button, CircularProgress } from '@mui/material'
-import { displayBalance, useBlockNumber, useTokenBalances, useWeb3 } from '@w3u/useWeb3'
+import { displayBalance, useTokenBalances, useWeb3 } from '@w3u/useWeb3'
 import Header from './components/Header'
 import { useTokens } from './hooks'
 import { getIcon } from './helpers'
@@ -16,9 +16,6 @@ const App = () => {
   const tokenAddresses = useMemo(() => tokens.map((token) => token.address), [tokens])
 
   const balances = useTokenBalances(tokenAddresses, account)
-
-  const blockNumber = useBlockNumber()
-  console.log(blockNumber)
 
   return (
     <Box>

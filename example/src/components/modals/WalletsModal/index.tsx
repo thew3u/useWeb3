@@ -51,9 +51,6 @@ const WalletsModal = ({ ...props }: DialogProps) => {
   const { activate, connectors, connector } = useWeb3()
   const connect = () => activate(connectors.injectedConnector, (e) => console.error(e), true)
 
-  console.log(connector === connectors.injectedConnector)
-  console.log(connector)
-  console.log(connectors.injectedConnector)
   return (
     <>
       <Dialog {...props}>
@@ -69,13 +66,13 @@ const WalletsModal = ({ ...props }: DialogProps) => {
           />
           <WalletItem
             active={connector === connectors.walletConnector}
-            connect={connect}
+            connect={() => activate(connectors.walletConnector, (e) => console.error(e), true)}
             name='WalletConnect'
             logo='https://raw.githubusercontent.com/web3-utilities/assets/main/wallets/wallet_connect.svg'
           />
           <WalletItem
             active={connector === connectors.walletLinkConnector}
-            connect={connect}
+            connect={() => activate(connectors.walletLinkConnector, (e) => console.error(e), true)}
             name='Coinbase Wallet'
             logo='https://raw.githubusercontent.com/web3-utilities/assets/main/wallets/coinbase.svg'
           />
